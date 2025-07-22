@@ -25,13 +25,11 @@ export function generarChecklistPDF(data) {
         content.push({ text: `${bloqueId} - ${blocks[bloqueId]}`, style: 'subheader' });
         const rows = respuestas
             .filter(r => r.bloque_id === bloqueId)
-            .map(r => {
-                return [
-                    { text: r.pregunta_texto },
-                    { text: r.respuesta.toUpperCase() },
-                    { text: r.observaciones || '' },
-                ];
-            });
+            .map(r => [
+                { text: r.pregunta_texto },
+                { text: r.respuesta.toUpperCase() },
+                { text: r.observaciones || '' },
+            ]);
 
         if (rows.length) {
             content.push({
