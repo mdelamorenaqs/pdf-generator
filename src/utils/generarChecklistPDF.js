@@ -1,6 +1,8 @@
-import pdfMake from "pdfmake/build/pdfmake.es.js";
-import pdfFonts from "pdfmake/build/vfs_fonts.js";
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import pdfMake from "pdfmake/build/pdfmake";
+import * as pdfFonts from "pdfmake/build/vfs_fonts";
+
+pdfMake.vfs = pdfFonts.default?.pdfMake?.vfs || pdfFonts.pdfMake.vfs;
+
 
 export function generarChecklistPDF(data) {
     const { cliente, tecnico, fecha, respuestas, firma_base64 } = data;
